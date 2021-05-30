@@ -1,62 +1,54 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { Alert, Button, SafeAreaView, StyleSheet, Text, TextInput, View } from "react-native";
-import Amplify from 'aws-amplify'
-import config from './src/aws-exports'
-Amplify.configure(config)
+import Amplify from "aws-amplify";
+import config from "./src/aws-exports";
+import SplashScreen from "./src/screens/splash/SplashScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import Login from "./src/screens/login/Login";
+import Home from "./src/screens/home/Home";
+
+Amplify.configure(config);
+const Stack = createStackNavigator();
+
+export enum Screens{
+    SPLASH="SPLASH",
+    LOGIN="LOGIN",
+    HOME="HOME",
+}
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>This is my firt app</Text>
-      <Button
-        onPress={()=>{
-          Alert.alert(
-            "Alert Title",
-            "My Alert Msg",
-            [
-              {
-                text: "Cancel",
-                onPress: () => console.log("Cancel Pressed"),
-                style: "cancel"
-              },
-              { text: "OK", onPress: () => console.log("OK Pressed") }
-            ]
-          );
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
         }}
-        title="Learn More"
-        color="#841584"
-        accessibilityLabel="Learn more about this purple button"
-      />
-      <SafeAreaView>
-      <TextInput
-        style={styles.input}
-        onChangeText={()=>{}}
-        value={"welcome"}
-      />
-      <TextInput
-       
-        onChangeText={()=>{}}
-        value={"45"}
-        placeholder="useless placeholder"
-        keyboardType="numeric"
-      />
-    </SafeAreaView>
-      <StatusBar style="auto" />
-    </View>
+
+      >
+        <Stack.Screen name={Screens.SPLASH} component={SplashScreen}  options={horizontalAnimation}/>
+
+        <Stack.Screen name={Screens.LOGIN} component={Login}  options={horizontalAnimation}/>
+
+        <Stack.Screen name={Screens.HOME} component={Home}  options={horizontalAnimation}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#ff7b54",
-    alignItems: "center",
-    justifyContent: "center",
+const horizontalAnimation = {
+  cardStyleInterpolator: ({ current, layouts }:any) => {
+    return {
+      cardStyle: {
+        backgroundColor:"#303846",
+        transform: [
+          {
+            translateX: current.progress.interpolate({
+              inputRange: [0, 1],
+              outputRange: [layouts.screen.width, 0],
+            }),
+          },
+        ],
+      },
+    };
   },
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-  }
-});
+};
