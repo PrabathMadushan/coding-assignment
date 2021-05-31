@@ -1,8 +1,9 @@
 import React from "react";
-import { View, StyleSheet, Text, ActivityIndicator } from "react-native";
+import { View, StyleSheet, Text, ActivityIndicator,Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 import { StackNavigationProp } from "@react-navigation/stack";
+import DefaultButton from "../../components/button/Button";
 
 type ProfileScreenNavigationProp = StackNavigationProp<any, "Profile">;
 
@@ -13,12 +14,12 @@ type Props = {
 const Login = (props: Props) => {
   return (
     <View style={styles.container}>
-      
-      <Ionicons name="lock-closed-sharp" size={60} color="#00ead3" onPress={()=>{
-        
-      }}/>
-      <Text style={styles.headerText}>Login with facebook</Text>
-      <Text style={styles.headerText}>Login with google</Text>
+      <Image
+        style={styles.loginLogo}
+        source={require("../../../assets/login.png")}
+      />
+      <DefaultButton text="Login with facebook"/>
+      <DefaultButton text="Login with google"/> 
       
     </View>
   );
@@ -27,26 +28,25 @@ const Login = (props: Props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#303846",
+    backgroundColor: "#ccc",
     alignItems: "center",
     justifyContent: "center",
   },
-  headerText: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginTop: 5,
-    color: "#bbb",
-  },
+  
   normalText: {
     fontSize: 14,
     marginTop: 5,
     color: "#bbb",
   },
   icon: {
-    backgroundColor: "#00ead3",
+    backgroundColor: "rgb(70, 48, 235)",
     padding: 10,
     borderRadius: 10,
   },
+  loginLogo:{
+    width: 150,
+    height: 150,
+  }
 });
 
 export default Login;
