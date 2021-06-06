@@ -4,6 +4,9 @@ import { Ionicons } from "@expo/vector-icons";
 
 import { StackNavigationProp } from "@react-navigation/stack";
 import DefaultButton from "../../components/button/Button";
+import { Auth, Hub } from "aws-amplify";
+import { CognitoHostedUIIdentityProvider } from "@aws-amplify/auth/lib/types";
+import { Screens } from "../../../App";
 
 type ProfileScreenNavigationProp = StackNavigationProp<any, "Profile">;
 
@@ -18,8 +21,20 @@ const Login = (props: Props) => {
         style={styles.loginLogo}
         source={require("../../../assets/login.png")}
       />
-      <DefaultButton text="Login with facebook"/>
-      <DefaultButton text="Login with google"/> 
+      <DefaultButton text="Login with facebook" onTouch={()=>{
+        Auth.federatedSignIn({provider:CognitoHostedUIIdentityProvider.Facebook}).then((data)=>{
+          props.navigation.navigate(Screens.HOME);
+        }).catch((error)=>{
+
+        });
+      }}/>
+      <DefaultButton text="Login with google" onTouch={()=>{
+         Auth.federatedSignIn({provider:CognitoHostedUIIdentityProvider.Google}).then((data)=>{
+          props.navigation.navigate(Screens.HOME);
+        }).catch((error)=>{
+          
+        });;
+      }}/> 
       
     </View>
   );

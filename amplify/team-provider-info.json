@@ -10,6 +10,11 @@
       "StackName": "amplify-codingassignment-dev-140915",
       "StackId": "arn:aws:cloudformation:ap-south-1:510530309206:stack/amplify-codingassignment-dev-140915/32699c30-bf90-11eb-b73a-06316db0f9b8",
       "AmplifyAppId": "d3pk2q4l420aad"
+    },
+    "categories": {
+      "auth": {
+        "codingassignment13103d23": {}
+      }
     }
   }
 }

@@ -1,0 +1,2 @@
+Hosted UI Endpoint: https://codingassignment13103d23-13103d23-dev.auth.ap-south-1.amazoncognito.com/
+Test Your Hosted UI Endpoint: https://codingassignment13103d23-13103d23-dev.auth.ap-south-1.amazoncognito.com/login?response_type=code&client_id=7niurvtulc9k825st5knu5efi6&redirect_uri=exp://127.0.0.1:19000/--/
