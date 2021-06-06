@@ -4,10 +4,10 @@ import awsconfig from "./src/aws-exports";
 import SplashScreen from "./src/screens/splash/SplashScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Linking, Platform } from "react-native";
+// import { Linking, Platform } from "react-native";
 import Login from "./src/screens/login/Login";
 import Home from "./src/screens/home/Home";
-import * as WebBrowser from "expo-web-browser";
+// import * as WebBrowser from "expo-web-browser";
 
 
 

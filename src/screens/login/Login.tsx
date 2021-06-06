@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, ActivityIndicator,Image } from "react-native";
 
 import { StackNavigationProp } from "@react-navigation/stack";
 import DefaultButton from "../../components/button/Button";
-import { Auth, Hub } from "aws-amplify";
+import { Auth } from "aws-amplify";
 import { CognitoHostedUIIdentityProvider } from "@aws-amplify/auth/lib/types";
 import { Screens } from "../../../App";
 
