@@ -10,6 +10,7 @@ import { Auth, API } from "aws-amplify";
 import { StackNavigationProp } from "@react-navigation/stack";
 import DefaultButton from "../../components/button/Button";
 import { Screens } from "../../../App";
+import DeviceInfo from 'react-native-device-info';
 type ProfileScreenNavigationProp = StackNavigationProp<any, "Profile">;
 
 type Props = {
@@ -46,7 +47,7 @@ const Home = (props: Props) => {
       body: {
         requestName: cName,
         userName: email,
-        deviceName: "poco x3",
+        deviceName: DeviceInfo.getModel(),
       },
     })
       .then((res) => {

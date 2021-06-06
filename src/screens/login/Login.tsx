@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text, ActivityIndicator,Image } from "react-native";
+import { View, StyleSheet,Image } from "react-native";
 
 import { StackNavigationProp } from "@react-navigation/stack";
 import DefaultButton from "../../components/button/Button";
@@ -22,14 +22,19 @@ const Login = (props: Props) => {
       />
       <DefaultButton text="Login with facebook" onPress={()=>{
         Auth.federatedSignIn({provider:CognitoHostedUIIdentityProvider.Facebook}).then((data)=>{
-          props.navigation.navigate(Screens.HOME);
+          Auth.currentSession().then((session) => {
+            if(session) props.navigation.navigate(Screens.HOME);
+          });
+         
         }).catch((error)=>{
 
         });
       }}/>
       <DefaultButton text="Login with google" onPress={()=>{
          Auth.federatedSignIn({provider:CognitoHostedUIIdentityProvider.Google}).then((data)=>{
-          props.navigation.navigate(Screens.HOME);
+          Auth.currentSession().then((session) => {
+            if(!session) props.navigation.navigate(Screens.HOME);
+          });
         }).catch((error)=>{
           
         });;
