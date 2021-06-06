@@ -3,14 +3,14 @@ import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
 
 interface IProps {
   text: string;
-  onTouch?: () => void;
+  onPress?: () => void;
   icons?: any;
   width?:number;
 }
 
 const DefaultButton = (props: IProps) => {
   return (
-    <TouchableOpacity onPress={props.onTouch} style={styles.appButtonContainer}>
+    <TouchableOpacity onPress={props.onPress} style={styles.appButtonContainer}>
       <Text style={styles.appButtonText}>{props.text}</Text>
     </TouchableOpacity>
   );

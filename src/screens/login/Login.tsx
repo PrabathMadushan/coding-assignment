@@ -1,6 +1,5 @@
 import React from "react";
 import { View, StyleSheet, Text, ActivityIndicator,Image } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 
 import { StackNavigationProp } from "@react-navigation/stack";
 import DefaultButton from "../../components/button/Button";
@@ -21,14 +20,14 @@ const Login = (props: Props) => {
         style={styles.loginLogo}
         source={require("../../../assets/login.png")}
       />
-      <DefaultButton text="Login with facebook" onTouch={()=>{
+      <DefaultButton text="Login with facebook" onPress={()=>{
         Auth.federatedSignIn({provider:CognitoHostedUIIdentityProvider.Facebook}).then((data)=>{
           props.navigation.navigate(Screens.HOME);
         }).catch((error)=>{
 
         });
       }}/>
-      <DefaultButton text="Login with google" onTouch={()=>{
+      <DefaultButton text="Login with google" onPress={()=>{
          Auth.federatedSignIn({provider:CognitoHostedUIIdentityProvider.Google}).then((data)=>{
           props.navigation.navigate(Screens.HOME);
         }).catch((error)=>{
