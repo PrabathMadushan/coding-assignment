@@ -9,24 +9,21 @@ import Login from "./src/screens/login/Login";
 import Home from "./src/screens/home/Home";
 import * as WebBrowser from "expo-web-browser";
 
-type AuthSessionResult = {
-  type: "cancel" | "dismiss" | "success";
-  url: string;
-};
 
-async function urlOpener(url: string, redirectUrl: string) {
-  const { type, url: newUrl } = (await WebBrowser.openAuthSessionAsync(
-    url,
-    redirectUrl
-  )) as AuthSessionResult;
 
-  if (type === "success" && Platform.OS === "ios") {
-    WebBrowser.dismissBrowser();
-    return Linking.openURL(newUrl);
-  }
-}
+// async function urlOpener(url: string, redirectUrl: string) {
+//   const { type, url: newUrl } = (await WebBrowser.openAuthSessionAsync(
+//     url,
+//     redirectUrl
+//   )) as WebBrowser.WebBrowserRedirectResult;
 
-Amplify.configure(awsconfig)
+//   if (type === "success" && Platform.OS === "ios") {
+//     WebBrowser.dismissBrowser();
+//     return Linking.openURL(newUrl);
+//   }
+// }
+
+Amplify.configure(awsconfig);
 
 // Amplify.configure({
 //   ...awsconfig,
